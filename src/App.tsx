@@ -1,13 +1,14 @@
-import React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Navbar from './components/Navbar'
-import Home from './pages/Home'
-import Competitions from './pages/Competitions'
-import Publishers from './pages/Publishers'
-import PublisherDetail from './pages/PublisherDetail'
-import NotFound from './pages/NotFound'
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import Competitions from "./pages/Competitions";
+import Publishers from "./pages/Publishers";
+import PublisherDetail from "./pages/PublisherDetail";
+import NotFound from "./pages/NotFound";
+import AboutUs from "./components/AboutUs";
 
-export default function App(){
+export default function App() {
   return (
     <BrowserRouter>
       <div className="app">
@@ -21,7 +22,8 @@ export default function App(){
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
+        <AboutUs />
       </div>
     </BrowserRouter>
-  )
+  );
 }

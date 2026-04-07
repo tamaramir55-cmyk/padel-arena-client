@@ -31,6 +31,41 @@ const MOCK_PUBLISHERS: Publisher[] = [
     bio: "אחראית רישומים ואירועים",
     contact: "sharon@example.com",
   },
+    {
+    id: "p1",
+    name: "יוסי כהן",
+    bio: "מארגן ותיק של תחרויות מקומיות",
+    contact: "yossi@example.com",
+  },
+  {
+    id: "p2",
+    name: "שרון לוי",
+    bio: "אחראית רישומים ואירועים",
+    contact: "sharon@example.com",
+  },
+    {
+    id: "p1",
+    name: "יוסי כהן",
+    bio: "מארגן ותיק של תחרויות מקומיות",
+    contact: "yossi@example.com",
+  },
+  {
+    id: "p2",
+    name: "שרון לוי",
+    bio: "אחראית רישומים ואירועים",
+    contact: "sharon@example.com",
+  },  {
+    id: "p1",
+    name: "יוסי כהן",
+    bio: "מארגן ותיק של תחרויות מקומיות",
+    contact: "yossi@example.com",
+  },
+  {
+    id: "p2",
+    name: "שרון לוי",
+    bio: "אחראית רישומים ואירועים",
+    contact: "sharon@example.com",
+  },
 ];
 
 const MOCK_TOURNAMENTS: Tournament[] = [

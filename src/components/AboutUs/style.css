@@ -1,0 +1,95 @@
+/* AboutUs centered, compact style */
+.aboutus {
+    background: #0f172a;
+    color: #fff;
+    padding: 18px 0;
+    margin-top: 36px
+}
+
+.aboutus-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px
+}
+
+.aboutus-text-line {
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.95)
+}
+
+.aboutus-links-row {
+    display: flex;
+    gap: 12px;
+    align-items: center
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 9999px;
+    color: #fff;
+    text-decoration: none;
+    transition: transform 160ms, box-shadow 160ms
+}
+
+.social-link svg {
+    width: 18px;
+    height: 18px
+}
+
+.social-link.instagram {
+    background: linear-gradient(45deg, #f58529, #dd2a7b)
+}
+
+.social-link.youtube {
+    background: #ff0000
+}
+
+.social-link.facebook {
+    background: #1877f2
+}
+
+.social-link.email-link {
+    background: rgba(255, 255, 255, 0.06);
+    padding: 6px 10px;
+    border-radius: 20px;
+    width: auto;
+    display: inline-flex;
+    gap: 8px
+}
+
+.email-text {
+    font-size: 13px
+}
+
+.social-link:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25)
+}
+
+.aboutus-bottom {
+    padding: 8px 0;
+    margin-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    text-align: center
+}
+
+@media(max-width:480px) {
+    .aboutus-text-line {
+        font-size: 14px
+    }
+
+    .social-link {
+        width: 36px;
+        height: 36px
+    }
+
+    .email-text {
+        display: none
+    }
+}

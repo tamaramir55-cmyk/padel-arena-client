@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 export default function UsersList() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const API_URL = import.meta.env.VITE_API_URL;
   useEffect(() => {
     async function load() {
       try {
-        const res = await fetch(`${env.VITE_API_URL}/api/users`);
+        const res = await fetch(`${API_URL}/api/users`);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
         setUsers(data);
@@ -28,8 +28,10 @@ export default function UsersList() {
     <div>
       <h2>Users</h2>
       <ul>
-        {users.map(u => (
-          <li key={u.id}>{u.name} ({u.email})</li>
+        {users.map((u) => (
+          <li key={u.id}>
+            {u.name} ({u.email})
+          </li>
         ))}
       </ul>
     </div>

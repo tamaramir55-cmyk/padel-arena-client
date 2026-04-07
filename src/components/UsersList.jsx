@@ -21,19 +21,27 @@ export default function UsersList() {
     load();
   }, []);
 
-  if (loading) return <div>Loading users...</div>;
-  if (error) return <div>Error: {error}</div>;
+  if (loading) return <div className="panel">Loading members...</div>;
+  if (error) return <div className="panel">Error: {error}</div>;
 
   return (
-    <div>
-      <h2>Users</h2>
-      <ul>
+    <section className="members">
+      <h2>Members</h2>
+      <div className="member-list">
         {users.map((u) => (
-          <li key={u.id}>
-            {u.name} ({u.email})
-          </li>
+          <div key={u.id} className="member-card">
+            <div className="member-avatar">
+              {u.firstName ? u.firstName[0] : "U"}
+            </div>
+            <div className="member-info">
+              <div className="member-name">
+                {u.firstName} {u.lastName}
+              </div>
+              <div className="member-email">{u.email}</div>
+            </div>
+          </div>
         ))}
-      </ul>
-    </div>
+      </div>
+    </section>
   );
 }

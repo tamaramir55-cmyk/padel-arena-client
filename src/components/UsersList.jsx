@@ -8,7 +8,7 @@ export default function UsersList() {
   useEffect(() => {
     async function load() {
       try {
-        const res = await fetch('http://localhost:3000/api/users');
+        const res = await fetch(`${env.VITE_API_URL}/api/users`);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
         setUsers(data);

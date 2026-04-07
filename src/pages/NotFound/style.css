@@ -1,0 +1,20 @@
+/* NotFound page styles */
+.notfound-container {
+    padding: 32px
+}
+
+.notfound-card {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center
+}
+
+.notfound-title {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 8px
+}
+
+.notfound-text {
+    color: var(--muted)
+}

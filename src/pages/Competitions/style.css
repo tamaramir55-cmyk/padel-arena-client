@@ -1,0 +1,14 @@
+/* Competitions page styles */
+.section-heading {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px
+}
+
+.card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+    border: 1px solid rgba(15, 23, 42, 0.03)
+}

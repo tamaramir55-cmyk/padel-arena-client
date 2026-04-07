@@ -1,0 +1,14 @@
+/* TournamentCard specific styles */
+.tournament-card {
+    border-inline-start: 5px solid var(--primary)
+}
+
+.tournament-card h3 {
+    font-size: 18px;
+    font-weight: 700
+}
+
+.tournament-card .small {
+    font-size: 13px;
+    color: var(--muted)
+}

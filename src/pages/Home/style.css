@@ -1,0 +1,23 @@
+/* Home page specific styles */
+.hero-banner {
+    background: linear-gradient(90deg, var(--primary), #0a79ff);
+    color: #fff;
+    padding: 48px 0
+}
+
+.header-photo {
+    width: 160px;
+    height: 160px;
+    border-radius: 9999px;
+    object-fit: cover;
+    border: 6px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 12px 30px rgba(11, 99, 255, 0.12)
+}
+
+@media(max-width:768px) {
+    .header-photo {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto
+    }
+}

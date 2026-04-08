@@ -2,8 +2,9 @@ import React from "react";
 import "./style.css";
 import { FaInstagram, FaYoutube, FaFacebookF } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import { INSTAGRAM_URL, YOUTUBE_URL, FACEBOOK_URL } from "../../utils/url";
 
-export default function AboutUs(): any {
+const AboutUs = () => {
   return (
     <footer className="aboutus" dir="rtl" aria-label="אודותינו וחיבור לרשתות">
       <div className="aboutus-inner container">
@@ -17,8 +18,8 @@ export default function AboutUs(): any {
           aria-label="קישורים לרשתות חברתיות"
         >
           <a
-            className="social-link instagram"
-            href="https://instagram.com"
+            className="social-link"
+            href={INSTAGRAM_URL}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
@@ -26,8 +27,8 @@ export default function AboutUs(): any {
             <FaInstagram aria-hidden="true" />
           </a>
           <a
-            className="social-link youtube"
-            href="https://youtube.com"
+            className="social-link"
+            href={YOUTUBE_URL}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="YouTube"
@@ -35,8 +36,8 @@ export default function AboutUs(): any {
             <FaYoutube aria-hidden="true" />
           </a>
           <a
-            className="social-link facebook"
-            href="https://facebook.com"
+            className="social-link"
+            href={FACEBOOK_URL}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Facebook"
@@ -48,9 +49,11 @@ export default function AboutUs(): any {
 
       <div className="aboutus-bottom">
         <div className="container small text-muted">
-        {new Date().getFullYear()} ©   כל הזכויות שמורות - 10PadelArena 
+          © {new Date().getFullYear()} כל הזכויות שמורות — 10Padel
         </div>
       </div>
     </footer>
   );
-}
+};
+
+export default AboutUs;

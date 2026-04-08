@@ -34,7 +34,7 @@
 
 .brand-text {
     font-weight: 800;
-    color: var(--primary);
+    color: var(--muted);
     font-size: 18px;
 }
 
@@ -80,13 +80,34 @@
     border-radius: 8px;
 }
 
-.signup {
-    background: linear-gradient(90deg, var(--primary), #0a79ff);
+.signin {
+    background: var(--primary);
     color: #fff;
     padding: 8px 14px;
     border-radius: 10px;
     text-decoration: none;
-    box-shadow: 0 8px 22px rgba(11, 99, 255, 0.08);
+}
+
+.signin-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: var(--muted);
+    font-weight: 600;
+}
+
+.signin-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.signin-btn.mobile {
+    width: 100%;
+    justify-content: center;
+    color: black
 }
 
 /* Mobile toggle button */
@@ -96,11 +117,13 @@
     border: none;
     padding: 6px;
     border-radius: 8px;
+    color: var(--muted);
 }
 
-/* Mobile menu */
+/* Mobile menu - hidden by default, visible only when `.open` class is applied */
 .mobile-menu {
     display: none;
+    z-index: 40;
 }
 
 .mobile-menu.open {
@@ -126,7 +149,7 @@
     padding: 10px;
     border-radius: 8px;
     text-decoration: none;
-    color: var(--primary);
+    color: var(--secondery);
 }
 
 .mobile-actions {
@@ -137,21 +160,39 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+    .logo {
+        width: 36px;
+        height: 36px
+    }
+
+    .brand-text {
+        font-size: 16px
+    }
+
     .nav-inner {
-        flex-direction: row;
-        align-items: center;
-        gap: 12px;
+        padding: 8px
     }
 
     .nav-links {
-        display: none;
-    }
-
-    .mobile-toggle {
-        display: inline-flex;
+        display: none
     }
 
     .nav-actions {
-        display: none;
+        display: none
+    }
+
+    /* show mobile toggle on small screens */
+    .mobile-toggle {
+        display: inline-flex;
+    }
+}
+
+@media (max-width: 420px) {
+    .brand-text {
+        font-size: 14px
+    }
+
+    .mobile-toggle {
+        padding: 8px
     }
 }

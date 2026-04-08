@@ -1,20 +1,32 @@
 /* NotFound page styles */
 .notfound-container {
-    padding: 32px
+    padding: 32px;
+    color: var(--muted);
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    /* center vertically in viewport */
+    box-sizing: border-box;
 }
 
 .notfound-card {
     max-width: 720px;
-    margin: 0 auto;
-    text-align: center
+    text-align: center;
 }
 
 .notfound-title {
     font-size: 22px;
     font-weight: 800;
-    margin-bottom: 8px
+    margin-bottom: 2px;
 }
 
 .notfound-text {
-    color: var(--muted)
+    color: var(--muted);
+}
+
+.notfound-image {
+    width: 30%;
+    height: 30%;
 }

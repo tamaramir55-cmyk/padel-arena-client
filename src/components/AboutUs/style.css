@@ -1,7 +1,7 @@
-/* AboutUs centered, compact style */
+/* AboutUs centered, compact style - blue link backgrounds */
 .aboutus {
     background: #0f172a;
-    color: #fff;
+    color: var(--muted);
     padding: 18px 0;
     margin-top: 36px
 }
@@ -16,7 +16,7 @@
 
 .aboutus-text-line {
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.95)
+    color: var(--muted)
 }
 
 .aboutus-links-row {
@@ -25,6 +25,7 @@
     align-items: center
 }
 
+/* make all social-link icons use primary blue background and white icon */
 .social-link {
     display: inline-flex;
     align-items: center;
@@ -34,37 +35,31 @@
     border-radius: 9999px;
     color: #fff;
     text-decoration: none;
-    transition: transform 160ms, box-shadow 160ms
+    transition: transform 160ms, box-shadow 160ms;
+    background: var(--primary)
 }
 
 .social-link svg {
     width: 18px;
-    height: 18px
+    height: 18px;
+    fill: currentColor
 }
 
-.social-link.instagram {
-    background: linear-gradient(45deg, #f58529, #dd2a7b)
-}
-
-.social-link.youtube {
-    background: #ff0000
-}
-
-.social-link.facebook {
-    background: #1877f2
-}
-
+/* keep email pill distinct: transparent background with primary outline and primary text */
 .social-link.email-link {
-    background: rgba(255, 255, 255, 0.06);
+    background: transparent;
     padding: 6px 10px;
     border-radius: 20px;
     width: auto;
     display: inline-flex;
-    gap: 8px
+    gap: 8px;
+    border: 1px solid var(--primary);
+    color: var(--primary)
 }
 
 .email-text {
-    font-size: 13px
+    font-size: 13px;
+    color: var(--primary)
 }
 
 .social-link:hover {

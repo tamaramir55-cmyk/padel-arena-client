@@ -1,0 +1,246 @@
+/* Modal styles */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(2, 6, 23, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 60
+}
+
+.modal {
+    max-width: 420px;
+    width: 80%;
+    padding: 18px;
+    border-radius: 12px
+}
+
+.modal input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    margin-top: 8px
+}
+
+/* SignUp modal styles */
+.signup-card {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 12px;
+    position: relative
+}
+
+.modal-close {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: transparent;
+    border: none;
+    font-size: 22px;
+    line-height: 1;
+    color: #6b7280;
+    cursor: pointer
+}
+
+.signup-title {
+    text-align: center;
+    margin: 0 0 6px 0;
+    font-size: 18px
+}
+
+.signup-sub {
+    text-align: center;
+    margin: 0 0 8px 0;
+    color: var(--secondary);
+    font-size: 13px
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px
+}
+
+.field {
+    display: flex;
+    flex-direction: column
+}
+
+.label-text {
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.signup-form input {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(15, 23, 42, 0.06)
+}
+
+.password-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.password-row input {
+    height: 40px;
+    line-height: 1.2;
+    /* keep space on the right for caret */
+    padding-left: 44px;
+    /* reserve space for the eye on the left */
+    box-sizing: border-box;
+}
+
+.pwd-toggle {
+    position: absolute;
+    left: 8px;
+    /* place at left inside the input */
+    right: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    font-size: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border-radius: 8px;
+    z-index: 2;
+    background: transparent;
+    padding-top: 10px;
+}
+
+.pwd-toggle svg {
+    width: 18px;
+    height: 18px
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 7px;
+    justify-content: flex-end
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, var(--primary), #0a79ff);
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 4px;
+    border-radius: 10px;
+    border: 1px solid var(--secondary);
+    background: var(--black);
+    cursor: pointer;
+    color: var(--secondary);
+    font-weight: 600
+}
+
+.btn-ghost {
+    background: var(--grey);
+    border: none;
+    align-items: center;
+    padding: 2px 4px;
+    border-radius: 10px;
+    cursor: pointer
+}
+
+.auth-toggle {
+    display: block;
+    margin-top: 8px;
+    text-align: center;
+    color: #6b7280;
+    /* readable muted color */
+    font-size: 13px;
+}
+
+.toggle-link {
+    background: none;
+    border: none;
+    color: var(--primary);
+    cursor: pointer;
+    font-weight: 700;
+    margin-left: 6px;
+}
+
+/* compact inputs and buttons */
+.signup-form input {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(15, 23, 42, 0.06)
+}
+
+.btn-primary {
+    padding: 8px 12px;
+    border-radius: 8px
+}
+
+.btn-ghost {
+    padding: 8px 10px
+}
+
+/* responsive tweaks */
+@media (max-width:480px) {
+    .signup-card.auth-modal {
+        max-width: 96%;
+        padding: 12px
+    }
+
+    .password-row input {
+        height: 36px;
+        padding-left: 40px
+    }
+
+    .pwd-toggle {
+        width: 32px;
+        height: 32px
+    }
+}
+
+/* Mobile modal: center modal and limit width instead of full-width */
+@media (max-width: 480px) {
+    .signup-card.auth-modal {
+        position: relative;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        max-width: 380px;
+        /* ensure a comfortable modal width on phones */
+        margin: 20px auto;
+        height: auto;
+        border-radius: 12px;
+    }
+
+    .auth-inner {
+        gap: 8px
+    }
+
+    .actions {
+        flex-direction: row;
+        gap: 10px
+    }
+
+    .actions button {
+        width: auto
+    }
+
+    .oauth-row {
+        margin-bottom: 12px
+    }
+}

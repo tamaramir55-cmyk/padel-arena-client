@@ -1,24 +1,36 @@
-import React, { useEffect, useState } from 'react'
-import { fetchTournaments } from '../../lib/stubs'
-import TournamentCard from '../../components/TournamentCard/TournamentCard'
-import './style.css'
+import React, { useEffect, useState } from "react";
+import { fetchTournaments } from "../../lib/stubs";
+import TournamentCard from "../../components/TournamentCard";
+import "./style.css";
 
-export default function Competitions(): any {
-  const [items,setItems] = useState([])
-  const [loading,setLoading] = useState(true)
+const Competitions = () => {
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  useEffect(()=>{
-    fetchTournaments().then(d=>{ setItems(d); setLoading(false) })
-  },[])
+  useEffect(() => {
+    fetchTournaments().then((d) => {
+      setItems(d);
+      setLoading(false);
+    });
+  }, []);
 
-  if(loading) return <div className="container" dir="rtl">טוען...</div>
+  if (loading)
+    return (
+      <div className="container" dir="rtl">
+        טוען...
+      </div>
+    );
 
   return (
     <section className="py-6 container" dir="rtl">
       <h2 className="section-heading">תחרויות קרובות</h2>
-      <div style={{display:'grid',gap:12}}>
-        {items.map((t:any)=>(<TournamentCard key={t.id} t={t} />))}
+      <div style={{ display: "grid", gap: 12 }}>
+        {items.map((t: any) => (
+          <TournamentCard key={t.id} t={t} />
+        ))}
       </div>
     </section>
-  )
-}
+  );
+};
+
+export default Competitions;

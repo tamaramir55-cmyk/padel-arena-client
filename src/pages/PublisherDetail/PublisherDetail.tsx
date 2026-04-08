@@ -1,22 +1,30 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { fetchPublisherById, fetchTournamentsByPublisher } from '../../lib/stubs'
-import TournamentCard from '../../components/TournamentCard'
-import './style.css'
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import {
+  fetchPublisherById,
+  fetchTournamentsByPublisher,
+} from "../../lib/stubs";
+import TournamentCard from "../../components/TournamentCard";
+import "./style.css";
 
-export default function PublisherDetail(): any {
-  const { id } = useParams()
-  const [publisher,setPublisher] = useState(null)
-  const [tournaments,setTournaments] = useState([])
+const PublisherDetail = () => {
+  const { id } = useParams();
+  const [publisher, setPublisher] = useState(null);
+  const [tournaments, setTournaments] = useState([]);
 
-  useEffect(()=>{
-    if(typeof id === 'string'){
-      fetchPublisherById(id).then(p=>setPublisher(p))
-      fetchTournamentsByPublisher(id).then(t=>setTournaments(t))
+  useEffect(() => {
+    if (typeof id === "string") {
+      fetchPublisherById(id).then((p) => setPublisher(p));
+      fetchTournamentsByPublisher(id).then((t) => setTournaments(t));
     }
-  },[id])
+  }, [id]);
 
-  if(!publisher) return <div className="container" dir="rtl">טוען...</div>
+  if (!publisher)
+    return (
+      <div className="container" dir="rtl">
+        טוען...
+      </div>
+    );
 
   return (
     <section className="publisher-detail container" dir="rtl">
@@ -25,12 +33,16 @@ export default function PublisherDetail(): any {
         <p className="text-muted">{publisher.bio}</p>
       </div>
 
-      <div style={{marginTop:12}}>
-        <h3 style={{fontWeight:700}}>תחרויות מפרסם זה</h3>
-        <div style={{display:'grid',gap:12,marginTop:8}}>
-          {tournaments.map((t:any)=>(<TournamentCard key={t.id} t={t}/>))}
+      <div style={{ marginTop: 12 }}>
+        <h3 style={{ fontWeight: 700 }}>תחרויות מפרסם זה</h3>
+        <div style={{ display: "grid", gap: 12, marginTop: 8 }}>
+          {tournaments.map((t: any) => (
+            <TournamentCard key={t.id} t={t} />
+          ))}
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
+
+export default PublisherDetail;

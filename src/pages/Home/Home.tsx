@@ -23,9 +23,41 @@ const sample: Tournament[] = [
   },
 ];
 
-export default function Home() {
+const Home = () => {
   return (
     <div dir="rtl">
+      <div className="bg-gradient-to-r from-blue-600 to-blue-400 text-white py-12">
+        <div className="container flex flex-col md:flex-row items-center justify-between">
+          <div>
+            <h1 className="text-4xl font-bold">10 Padel Arena</h1>
+            <p className="mt-3">מרכז התחרויות והקהילה של ענף הפאדל</p>
+            <div className="mt-4 flex gap-3">
+              <Link
+                to="/tournaments"
+                className="bg-white text-blue-600 px-4 py-2 rounded-md font-semibold"
+              >
+                לראות תחרויות
+              </Link>
+              <Link
+                to="/signup"
+                className="bg-white text-blue-600 px-4 py-2 rounded-md font-semibold"
+              >
+                להצטרפות
+              </Link>
+            </div>
+          </div>
+
+          <div className="mt-6 md:mt-0">
+            <img
+              src={logo}
+              alt="10 פאדל ארנה"
+              className="header-photo"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+
       <section className="py-6 container">
         <h2 className="text-2xl font-bold mb-4">תחרויות קרובות</h2>
         <div className="grid gap-4">
@@ -56,4 +88,6 @@ export default function Home() {
       </section>
     </div>
   );
-}
+};
+
+export default Home;

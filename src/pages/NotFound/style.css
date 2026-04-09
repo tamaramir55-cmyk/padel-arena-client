@@ -30,3 +30,10 @@
     width: 30%;
     height: 30%;
 }
+
+@media (max-width: 480px) {
+    .notfound-image {
+    width: 80%;
+    height: 80%;
+}
+}

@@ -4,7 +4,9 @@ import "./style.css";
 import logo from "../../assets/site-logo.svg";
 import SignUpModal from "../SignUpModal";
 
-const Navbar = () => {
+export interface NavbarProps {}
+
+const Navbar: React.FC<NavbarProps> = () => {
   const [open, setOpen] = useState(false);
   const [signupOpen, setSignupOpen] = useState(false);
   return (

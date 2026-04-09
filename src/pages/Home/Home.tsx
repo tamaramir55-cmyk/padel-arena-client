@@ -3,27 +3,29 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/site-logo.svg";
 import "./style.css";
 
-type Tournament = {
-  id: string;
-  title: string;
-  date: string;
-  location: string;
-  spots: number;
-  price: string;
-};
+export interface HomeProps {}
 
-const sample: Tournament[] = [
-  {
-    id: "t1",
-    title: "טורניר פתוח",
-    date: "2026-05-10",
-    location: "מגרש מרכזי",
-    spots: 16,
-    price: "₪80",
-  },
-];
+const Home: React.FC<HomeProps> = () => {
+  type Tournament = {
+    id: string;
+    title: string;
+    date: string;
+    location: string;
+    spots: number;
+    price: string;
+  };
 
-const Home = () => {
+  const sample: Tournament[] = [
+    {
+      id: "t1",
+      title: "טורניר פתוח",
+      date: "2026-05-10",
+      location: "מגרש מרכזי",
+      spots: 16,
+      price: "₪80",
+    },
+  ];
+
   return (
     <div dir="rtl">
       <div className="bg-gradient-to-r from-blue-600 to-blue-400 text-white py-12">

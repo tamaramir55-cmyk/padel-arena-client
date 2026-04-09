@@ -3,34 +3,43 @@ import useCreateUser from "../../hooks/useCreateUser";
 import Modal from "../Modal";
 import "./style.css";
 import { toast } from "react-toastify";
-import { API_BASE } from "../../utils/api-base";
+import API_BASE_URL from "../../utils/api-base";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { toastError, toastSuccess } from "../../utils/toasts";
 
-const SignUpModal = ({
-  open,
-  onClose,
-  mode,
-}: {
-  open: any;
-  onClose: any;
+export interface SignUpModalProps {
+  open: boolean;
+  onClose: () => void;
   mode?: "login" | "signup";
-}) => {
-  const [currentMode, setCurrentMode] = useState("login" as any);
-  useEffect(() => setCurrentMode(mode || "login"), [mode]);
+}
 
-  const [form, setForm] = useState({
+type Mode = "login" | "signup";
+
+type AuthForm = {
+  email: string;
+  firstName: string;
+  lastName: string;
+  passwordHash: string;
+};
+
+const SignUpModal: React.FC<SignUpModalProps> = ({ open, onClose, mode }) => {
+  const [currentMode, setCurrentMode] = useState<Mode>(mode ?? "login");
+  useEffect(() => setCurrentMode(mode ?? "login"), [mode]);
+
+  const [form, setForm] = useState<AuthForm>({
     email: "",
     firstName: "",
     lastName: "",
-    password: "",
+    passwordHash: "",
   });
   const { createUser, loading, error } = useCreateUser();
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
-  async function submitSignup(e: any) {
+  async function submitSignup(
+    e: React.FormEvent<HTMLFormElement>,
+  ): Promise<void> {
     e.preventDefault();
-    if (!form.password || form.password.length < 6) {
+    if (!form.passwordHash || form.passwordHash.length < 6) {
       toastError("הססמא חייבת לכלול 6 תווים לפחות");
       return;
     }
@@ -40,34 +49,50 @@ const SignUpModal = ({
         email: form.email,
         firstName: form.firstName,
         lastName: form.lastName,
-        password: form.password,
-      } as any);
+        passwordHash: form.passwordHash,
+      });
       toastSuccess("נוצר משתמש בהצלחה");
       onClose();
-    } catch (err: any) {
-      toastError(err?.message || "שגיאה ביצירת משתמש");
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : String(err);
+      toastError(message || "שגיאה ביצירת משתמש");
     }
   }
 
-  async function submitLogin(e: any) {
+  async function submitLogin(
+    e: React.FormEvent<HTMLFormElement>,
+  ): Promise<void> {
     e.preventDefault();
     try {
-      const resp = await fetch(`${API_BASE || ""}/api/auth/login`, {
+      const resp = await fetch(`${API_BASE_URL || ""}/api/auth/login`, {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: form.email, password: form.password }),
+        body: JSON.stringify({
+          email: form.email,
+          passwordHash: form.passwordHash,
+        }),
       });
 
       if (resp.ok) {
         toastSuccess("התחברת בהצלחה");
         onClose();
       } else {
-        const body = await resp.json().catch(() => null);
-        throw new Error(body?.message || "Login failed");
+        const body = (await resp.json().catch(() => null)) as unknown;
+        let message = "Login failed";
+        if (
+          body &&
+          typeof body === "object" &&
+          "message" in (body as Record<string, unknown>)
+        ) {
+          const m = (body as { message?: unknown }).message;
+          if (typeof m === "string") message = m;
+        }
+        throw new Error(message);
       }
-    } catch (err: any) {
-      toastError(err?.message || "שגיאה בהתחברות");
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : String(err);
+      toastError(message || "שגיאה בהתחברות");
     }
   }
 
@@ -110,9 +135,9 @@ const SignUpModal = ({
                       type={showPassword ? "text" : "password"}
                       name="password"
                       placeholder={"סיסמה"}
-                      value={form.password}
+                      value={form.passwordHash}
                       onChange={(e) =>
-                        setForm({ ...form, password: e.target.value })
+                        setForm({ ...form, passwordHash: e.target.value })
                       }
                     />
                     <button
@@ -189,9 +214,9 @@ const SignUpModal = ({
                       type={showPassword ? "text" : "password"}
                       name="password"
                       placeholder={"סיסמה"}
-                      value={form.password}
+                      value={form.passwordHash}
                       onChange={(e) =>
-                        setForm({ ...form, password: e.target.value })
+                        setForm({ ...form, passwordHash: e.target.value })
                       }
                     />
                     <button

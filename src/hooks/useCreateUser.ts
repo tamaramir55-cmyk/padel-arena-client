@@ -1,38 +1,44 @@
-import { useState } from "react";
-import { CreateUserDto } from "../types/users/creat-user-dto";
-import { API_BASE } from "../utils/api-base";
+import { useState, useCallback } from "react";
+import { post } from "../services/api";
 
-const useCreateUser = () => {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  async function createUser(payload: CreateUserDto) {
-    setLoading(true);
-    setError(null);
-    try {
-      const res = await fetch(`${API_BASE}/api/users`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-
-      if (!res.ok) {
-        const body = await res.json().catch(() => null);
-        const message = body?.message || res.statusText || "Server error";
-        throw new Error(message);
-      }
-
-      const data = await res.json().catch(() => null);
-      setLoading(false);
-      return data;
-    } catch (err: any) {
-      setError(err?.message || "Unknown error");
-      setLoading(false);
-      throw err;
-    }
-  }
-
-  return { createUser, loading, error };
+export type CreateUserDto = {
+  email: string;
+  firstName?: string;
+  lastName?: string;
+  passwordHash: string;
 };
 
-export default useCreateUser;
+type CreateUserResult = {
+  id: string;
+};
+
+type UseCreateUserReturn = {
+  createUser: (dto: CreateUserDto) => Promise<CreateUserResult>;
+  loading: boolean;
+  error: string | null;
+};
+
+export default function useCreateUser(): UseCreateUserReturn {
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const createUser = useCallback(
+    async (dto: CreateUserDto): Promise<CreateUserResult> => {
+      setLoading(true);
+      setError(null);
+      try {
+        const res = await post<CreateUserResult>("/auth/signup", dto);
+        return res;
+      } catch (err: unknown) {
+        const message = err instanceof Error ? err.message : String(err);
+        setError(message);
+        throw err;
+      } finally {
+        setLoading(false);
+      }
+    },
+    [],
+  );
+
+  return { createUser, loading, error };
+}

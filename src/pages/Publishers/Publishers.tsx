@@ -3,8 +3,17 @@ import { fetchPublishers } from "../../lib/stubs";
 import { Link } from "react-router-dom";
 import "./style.css";
 
-const Publishers = () => {
-  const [items, setItems] = useState([]);
+export interface PublishersProps {}
+
+type Publisher = {
+  id: string;
+  name: string;
+  contact?: string;
+};
+
+const Publishers: React.FC<PublishersProps> = () => {
+  const [items, setItems] = useState<Publisher[]>([]);
+
   useEffect(() => {
     fetchPublishers().then((d) => setItems(d));
   }, []);
@@ -12,7 +21,7 @@ const Publishers = () => {
     <section className="container" dir="rtl">
       <h2 className="section-heading">מפרסמים</h2>
       <div style={{ display: "grid", gap: 12 }}>
-        {items.map((p: any) => (
+        {items.map((p) => (
           <Link
             to={`/publishers/${p.id}`}
             key={p.id}

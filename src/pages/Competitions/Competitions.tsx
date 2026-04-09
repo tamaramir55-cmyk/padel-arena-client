@@ -3,8 +3,17 @@ import { fetchTournaments } from "../../lib/stubs";
 import TournamentCard from "../../components/TournamentCard";
 import "./style.css";
 
-const Competitions = () => {
-  const [items, setItems] = useState([]);
+export interface CompetitionsProps {}
+
+const Competitions: React.FC<CompetitionsProps> = () => {
+  const [items, setItems] = useState<
+    {
+      id: string;
+      title: string;
+      date: string;
+      location: string;
+    }[]
+  >([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -25,8 +34,14 @@ const Competitions = () => {
     <section className="py-6 container" dir="rtl">
       <h2 className="section-heading">תחרויות קרובות</h2>
       <div style={{ display: "grid", gap: 12 }}>
-        {items.map((t: any) => (
-          <TournamentCard key={t.id} t={t} />
+        {items.map((t) => (
+          <TournamentCard
+            key={t.id}
+            id={t.id}
+            title={t.title}
+            date={t.date}
+            location={t.location}
+          />
         ))}
       </div>
     </section>

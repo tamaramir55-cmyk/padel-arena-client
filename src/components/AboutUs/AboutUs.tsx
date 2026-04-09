@@ -4,7 +4,9 @@ import { FaInstagram, FaYoutube, FaFacebookF } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { INSTAGRAM_URL, YOUTUBE_URL, FACEBOOK_URL } from "../../utils/url";
 
-const AboutUs = () => {
+export interface AboutUsProps {}
+
+const AboutUs: React.FC<AboutUsProps> = () => {
   return (
     <footer className="aboutus" dir="rtl" aria-label="אודותינו וחיבור לרשתות">
       <div className="aboutus-inner container">
@@ -49,7 +51,7 @@ const AboutUs = () => {
 
       <div className="aboutus-bottom">
         <div className="container small text-muted">
-          © {new Date().getFullYear()} כל הזכויות שמורות — 10Padel
+          ©2026 כל הזכויות שמורות — 10Padel
         </div>
       </div>
     </footer>

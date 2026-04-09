@@ -1,7 +1,19 @@
 import React, { useEffect } from "react";
 import "./style.css";
 
-const Modal = ({ open, onClose, children, ariaLabel }: any) => {
+export interface ModalProps {
+  open: boolean;
+  onClose: () => void;
+  children?: React.ReactNode;
+  ariaLabel?: string;
+}
+
+const Modal: React.FC<ModalProps> = ({
+  open,
+  onClose,
+  children,
+  ariaLabel,
+}) => {
   useEffect(() => {
     function onKey(e: any) {
       if (e.key === "Escape") onClose();
